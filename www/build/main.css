@@ -51545,6 +51545,54 @@ page-addneeding .button {
   font-size: 15px;
 }
 
+page-feedback .label {
+  padding-top: 0;
+  padding-right: 10px;
+  color: #1f2022;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+page-feedback .ion-list {
+  padding-top: 10px;
+}
+
+page-feedback .input {
+  background-color: white;
+  margin: 0;
+  border-radius: 25px;
+  color: black;
+  padding-right: 5px;
+  font-size: 15px;
+  border: 1px solid #127bca;
+}
+
+page-feedback .item {
+  margin: 0;
+}
+
+page-feedback .ion-textarea {
+  width: 100%;
+  height: 100px;
+  padding: 12px 20px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+page-feedback .button {
+  border-radius: 25px;
+  width: 100%;
+  height: 45px;
+  margin: 0;
+  padding-right: 5px;
+  border: 2px;
+  background-color: #488aff;
+}
+
 page-home .mypaddingHome {
   padding-top: 10%;
 }

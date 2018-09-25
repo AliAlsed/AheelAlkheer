@@ -21,20 +21,11 @@ export class HomePage {
 
 
   ionViewDidLoad() {
-
-   
-
-   
   }
+   
 
-
-
-
-
-
-
-
-
+   
+  
   goToMap(){
     this.navCtrl.push ( JsmapPage)
   }

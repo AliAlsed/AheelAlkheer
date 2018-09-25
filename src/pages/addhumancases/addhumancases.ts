@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 
 import { AngularFireDatabase ,AngularFireList  } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
 import { HomePage } from '../home/home';
 
 
@@ -15,23 +14,29 @@ export class AddhumancasesPage {
 
  humancaselist: AngularFireList<any>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public db:AngularFireDatabase) {
+ firstname;
+ address;
+ phone;
+ details;
 
-    this.humancaselist=db.list('/case');
+  constructor(public app:App,public navCtrl: NavController, public navParams: NavParams,public db:AngularFireDatabase) {
+
+    this.humancaselist=db.list('/waitingcase');
 
   }
 
-  addcase(firstname,lastname,address,phone,details){
+  addcase(firstname,address,phone,details){
     this.humancaselist.push({
      key_id: new Date().getTime(),
         firstname :firstname ,
-        lastname :lastname,
         address: address,
         phone: phone,
         details:details
           }).then(newPerson => {
-  
-            this.navCtrl.push(HomePage);
+            this.firstname="";
+            this.address="";
+            this.phone="";
+            this.details="";
           });
   }
 

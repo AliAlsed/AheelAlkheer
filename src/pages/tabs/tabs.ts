@@ -1,38 +1,27 @@
+import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
+import {  NavController } from 'ionic-angular';
+import { FeedbackPage } from '../feedback/feedback';
+import { AddhumancasesPage } from '../addhumancases/addhumancases';
 
-import { AboutPage } from '../about/about';
-import {ContactPage } from '../contact/contact';
-import {  HumancasePage } from '../humancase/humancase';
-import {  AddhumancasesPage } from '../addhumancases/addhumancases';
-import { ShowhumancasePage } from '../showhumancase/showhumancase';
-import { HomePage } from '../home/home';
-import {  NeedingPage }  from  '../needing/needing';
-import {AddneedingPage }  from  '../addneeding/addneeding';
-import  {ShowneedingPage }  from  '../showneeding/showneeding';
-import { MapPage }  from  '../map/map';
-import {JsmapPage} from '../jsmap/jsmap';
+/**
+ * Generated class for the TabsPage tabs.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
 @Component({
+  selector: 'page-tabs',
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
-  tab2Root =  HumancasePage;
-  tab3Root =AddhumancasesPage; 
-  
-  tab4Root = ShowhumancasePage ; 
+  homeRoot = HomePage
+  feedbackRoot = FeedbackPage
+  addCaseRoot = AddhumancasesPage
 
-  tab5Root = MapPage;
-  tab6Root =  NeedingPage;
-  tab7Root =  AddneedingPage;
 
-  tab8Root = ShowneedingPage;
-  
-  tab9Root = AboutPage;
-  tab10Root = ContactPage;
-  tab11Root = JsmapPage;
-  
-  constructor() {
+  constructor(public navCtrl: NavController) {}
 
-  }
 }

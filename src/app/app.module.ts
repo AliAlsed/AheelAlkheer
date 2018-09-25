@@ -33,6 +33,7 @@ import { AngularFireModule} from 'angularfire2';
 
 
  import { HttpModule } from '@angular/http';
+import { FeedbackPage } from '../pages/feedback/feedback';
 
 
 
@@ -78,7 +79,8 @@ import { AngularFireModule} from 'angularfire2';
     SignupPage,
     LoginPage,
     ShowhumancasePage,
-    JsmapPage
+    JsmapPage,
+    FeedbackPage
    
   ],
   imports: [   
@@ -109,7 +111,8 @@ import { AngularFireModule} from 'angularfire2';
     ShowhumancasePage,
     JsmapPage ,
     SignupPage,
-    LoginPage
+    LoginPage,
+    FeedbackPage
    
    
   ],
