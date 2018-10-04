@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { CallNumber } from '@ionic-native/call-number';
 
 
 
@@ -23,7 +24,7 @@ export class ShowneedingPage {
 
 
 
-  constructor(private fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public callp:CallNumber,private fire:AngularFireAuth,public navCtrl: NavController, public navParams: NavParams) {
 
    
 
@@ -42,6 +43,12 @@ export class ShowneedingPage {
   ionViewDidLoad() {
     // console.log('ionViewDidLoad ShowneedingPage');
     
+  }
+
+  call(phone){
+    this.callp.callNumber(phone.toString(), true)
+    .then(() => console.log('Launched dialer!'))
+    .catch(() => console.log('Error launching dialer'));
   }
   
 }

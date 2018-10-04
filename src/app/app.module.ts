@@ -34,6 +34,7 @@ import { AngularFireModule} from 'angularfire2';
 
  import { HttpModule } from '@angular/http';
 import { FeedbackPage } from '../pages/feedback/feedback';
+import { CallNumber } from '@ionic-native/call-number';
 
 
 
@@ -120,6 +121,7 @@ import { FeedbackPage } from '../pages/feedback/feedback';
     
     Facebook,
     GooglePlus,
+    CallNumber,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

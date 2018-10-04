@@ -59,5 +59,13 @@
     "variables": {
       "REVERSED_CLIENT_ID": "614542000368-sgioom8nioq20dii53dl8r765prjrkr7.apps.googleusercontent.com"
     }
+  },
+  "mx.ferreyra.callnumber": {
+    "source": {
+      "type": "registry",
+      "id": "call-number"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }
