@@ -29,6 +29,9 @@
     },
     "ionic-plugin-keyboard": {
       "PACKAGE_NAME": "com.codeforiraq.ahlalkheer"
+    },
+    "mx.ferreyra.callnumber": {
+      "PACKAGE_NAME": "com.codeforiraq.ahlalkheer"
     }
   },
   "dependent_plugins": {}

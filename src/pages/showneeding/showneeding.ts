@@ -46,7 +46,7 @@ export class ShowneedingPage {
   }
 
   call(phone){
-    this.callp.callNumber(phone.toString(), true)
+    this.callp.callNumber(String(phone), true)
     .then(() => console.log('Launched dialer!'))
     .catch(() => console.log('Error launching dialer'));
   }
