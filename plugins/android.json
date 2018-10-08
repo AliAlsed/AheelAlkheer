@@ -10,14 +10,6 @@
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.codeforiraq.ahlalkheer"
     },
-    "cordova-plugin-facebook4": {
-      "APP_ID": "230241697548133",
-      "APP_NAME": "ahl-khar",
-      "PACKAGE_NAME": "com.codeforiraq.ahlalkheer"
-    },
-    "cordova-plugin-googleplus": {
-      "PACKAGE_NAME": "com.codeforiraq.ahlalkheer"
-    },
     "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "com.codeforiraq.ahlalkheer"
     },
