@@ -83,9 +83,17 @@ export class NeedingPage {
   }
 
    goToAdd(){   
-   
-   this.navCtrl.setRoot(LoginPage)
-
+   this.fire.auth.onAuthStateChanged((user)=>{
+     if(!user){
+       this.navCtrl.push(LoginPage,{
+         'page':2
+       });
+       console.log("Not found")
+     }else{
+      console.log(user);
+      this.navCtrl.push(AddneedingPage);
+     }
+     });
    }
 
   deleteMy(key){
@@ -109,6 +117,9 @@ export class NeedingPage {
   
   delete(key){
     console.log(key);
+  }
+  logout(){
+    this.fire.auth.signOut();
   }
   
 

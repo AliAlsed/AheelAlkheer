@@ -1,12 +1,10 @@
+import { TabsPage } from './../tabs/tabs';
 
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,ToastController , AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController, App } from 'ionic-angular';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
-import { GooglePlus } from '@ionic-native/google-plus';
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
-
 import {AddneedingPage} from '../addneeding/addneeding';
 import {HomePage} from '../home/home';
 import {SignupPage} from '../signup/signup';
@@ -26,13 +24,15 @@ export class LoginPage {
   uid;
 
 
-  constructor( public af:AngularFireDatabase,private fb: Facebook,private googlePlus: GooglePlus, public alertCtrl:AlertController ,
+  constructor( public af:AngularFireDatabase,
+     public alertCtrl:AlertController ,
+     public app:App,
      public toastCtrl:ToastController,public fire: AngularFireAuth , public navCtrl: NavController, public navParams: NavParams) {
   
       this.peoplelist=af.list('/device');
 
 
-      this.fire.auth.onAuthStateChanged(function(user){
+      this.fire.auth.onAuthStateChanged((user)=>{
         // if(!user){
         //   this.navCtrl.push(LoginPage);
         // }else{
@@ -54,7 +54,7 @@ export class LoginPage {
 
 
     goToMain(){
-      this.navCtrl.setRoot(HomePage)
+      this.app.getRootNav().setRoot(TabsPage);
     }
 
     
@@ -66,7 +66,7 @@ export class LoginPage {
 
 
     
-    console.log('ionViewDidLoad LoginPage'); }
+    console.log(this.navParams.get('page')); }
 
 
 
@@ -93,8 +93,14 @@ if (this.email === undefined && this.password === undefined ) {
 
     this.fire.auth.signInWithEmailAndPassword(this.email,this.password).then(user =>{
       toast.present();
+      if(this.navParams.get('page') == 2){
+        console.log('AddneedingPage');
+        this.navCtrl.push(AddneedingPage);
+      } else{
+        this.app.getRootNav().setRoot(TabsPage);
+      }
     
-   this.navCtrl.push(AddneedingPage);
+     //this.navCtrl.push();
      
     }).catch(error=>{
       this.showAlert();
@@ -111,45 +117,11 @@ if (this.email === undefined && this.password === undefined ) {
     alert.present();
   }
   signUP(){
-    this.navCtrl.push(SignupPage);
+    this.navCtrl.push(SignupPage,{
+      'page':this.navParams.get('page')
+    });
   }
-  google(){
-    let toast = this.toastCtrl.create({
-      message: 'اهلا بك مجددا  ',
-      duration: 3000,
-      position: 'top'
-    });
-  
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    });
-    this.googlePlus.login({
-      'webClientId': '614542000368-sgioom8nioq20dii53dl8r765prjrkr7.apps.googleusercontent.com',
-      'offline': true
-    }).then(res => alert(res))
-    .catch(err => alert(err));
-   
-  
-  }
-  facebook(){
-    let toast = this.toastCtrl.create({
-      message: 'اهلا بك مجددا  ',
-      duration: 3000,
-      position: 'top'
-    });
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    }); 
-    return this.fb.login(['email'])
-    .then( response => {
-      const facebookCredential = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
-      this.fire.auth.signInWithCredential(facebookCredential)
-        .then( success => { 
-          this.navCtrl.setRoot(AddneedingPage);
-         alert("Firebase success: " + JSON.stringify(success)); 
-        });
-    }).catch((error) => { alert("error"+error) });
-}
+
     
   
 }

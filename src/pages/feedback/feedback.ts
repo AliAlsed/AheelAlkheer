@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import {  NavController, NavParams, App } from 'ionic-angular';
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
-
+import * as firebase from 'firebase';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { LoginPage } from '../login/login';
 /**
  * Generated class for the FeedbackPage page.
  *
@@ -20,7 +22,10 @@ export class FeedbackPage {
   firstname;
   details;
  
-   constructor(public app:App,public navCtrl: NavController, public navParams: NavParams,public db:AngularFireDatabase) {
+   constructor(public app:App,public navCtrl: NavController,
+      public afAuth:AngularFireAuth,
+     public navParams: NavParams,public db:AngularFireDatabase,
+     private fire:AngularFireAuth) {
  
      this.humancaselist=db.list('/feedback');
  
@@ -34,12 +39,22 @@ export class FeedbackPage {
            }).then(newPerson => {
              this.firstname="";
              this.details="";
+             console.log(this.afAuth.auth.currentUser.uid);
            });
    }
  
  
    ionViewDidLoad() {
-     console.log('ionViewDidLoad AddhumancasesPage');
-   }
+    this.fire.auth.onAuthStateChanged((user)=>{
+      if(!user){
+        this.navCtrl.setRoot(LoginPage,{
+          'page':1
+        });
+        console.log("Not found")
+      }else{
+       console.log(user);
+       //this.navCtrl.push();
+      }
+      });   }
 
 }

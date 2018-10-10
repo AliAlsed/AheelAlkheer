@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App  } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular'
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -7,6 +7,7 @@ import firebase from 'firebase';
 
 import {LoginPage} from '../login/login'
 import {AddneedingPage }  from  '../addneeding/addneeding';
+import { TabsPage } from '../tabs/tabs';
 
 
 @IonicPage()
@@ -21,17 +22,20 @@ export class SignupPage {
   password :string ='';
 
   constructor(private alertCtrl:AlertController, private toastCtrl: ToastController, public navCtrl: NavController, public navParams: NavParams,
-     public fire: AngularFireAuth) {
+     public fire: AngularFireAuth,
+     public app:App) {
 
      }
 
-  ionViewDidLoad() { console.log('ionViewDidLoad SignupPage');}
+  ionViewDidLoad() { this.navParams.get('page')}
 
 
 
 
   
-   gotoLogin()  {  this.navCtrl.push ( LoginPage ) ;  }
+   gotoLogin()  {  this.navCtrl.push ( LoginPage,{
+     'page':this.navParams.get('page')
+   } ) ;  }
 
 
 
@@ -53,7 +57,13 @@ export class SignupPage {
     position: 'top'
   });
   this.fire.auth.createUserWithEmailAndPassword(this.email,this.password).then(user=>{
-    this.navCtrl.setRoot(AddneedingPage);
+    if(this.navParams.get('page') == 2){
+      console.log('AddneedingPage');
+      this.navCtrl.setRoot(AddneedingPage);
+    } else{
+      this.app.getRootNav().setRoot(TabsPage);
+    }
+    //this.navCtrl.setRoot();
   }).catch(function(error){
     console.log(error);
     console.log(error.code);
