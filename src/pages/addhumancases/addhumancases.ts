@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, AlertController } from 'ionic-angular';
 
 import { AngularFireDatabase ,AngularFireList  } from 'angularfire2/database';
 import { HomePage } from '../home/home';
@@ -16,12 +16,12 @@ export class AddhumancasesPage {
 
  humancaselist: AngularFireList<any>;
 
- firstname;
- address;
- phone;
- details;
+ firstname="";
+ address="";
+ phone="";
+ details="";
 
-  constructor(public app:App,  private fire:AngularFireAuth,
+  constructor(public app:App,  private fire:AngularFireAuth,private alertCtrl: AlertController,
     
     public navCtrl: NavController, public navParams: NavParams,public db:AngularFireDatabase) {
 
@@ -30,18 +30,28 @@ export class AddhumancasesPage {
   }
 
   addcase(firstname,address,phone,details){
-    this.humancaselist.push({
+    if( this.firstname.trim()  ===''  ||  this.address.trim()  ===''  ||  this.phone.trim()  ===''  || this.details.trim()   ==='' ){
+
+      let alert1 = this.alertCtrl.create({
+        title: 'رجاءا قم بمليء جميع الادخالات',
+        
+        buttons: ['OK']
+      });
+      alert1.present();
+    } else{ 
+        this.humancaselist.push({
      key_id: new Date().getTime(),
-        firstname :firstname ,
-        address: address,
-        phone: phone,
-        details:details
+        firstname :this.firstname ,
+        address: this.address,
+        phone: this.phone,
+        details: this.details
           }).then(newPerson => {
             this.firstname="";
             this.address="";
             this.phone="";
             this.details="";
           });
+        }
   }
 
   ionViewDidLoad() {

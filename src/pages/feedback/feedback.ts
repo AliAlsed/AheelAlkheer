@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams, App } from 'ionic-angular';
+import { NavController, NavParams, App, AlertController } from 'ionic-angular';
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -19,28 +19,39 @@ export class FeedbackPage {
 
   humancaselist: AngularFireList<any>;
 
-  firstname;
-  details;
+  firstname="";
+  details="";
  
    constructor(public app:App,public navCtrl: NavController,
       public afAuth:AngularFireAuth,
      public navParams: NavParams,public db:AngularFireDatabase,
-     private fire:AngularFireAuth) {
+     private fire:AngularFireAuth,private alertCtrl: AlertController ) {
  
      this.humancaselist=db.list('/feedback');
  
    }
  
-   addcase(firstname,address,phone,details){
+   addcase(firstname,details){
+    if( this.firstname.trim()  ===''  || this.details.trim()   ==='' ){
+
+      let alert1 = this.alertCtrl.create({
+        title: 'رجاءا قم بمليء جميع الادخالات',
+        
+        buttons: ['OK']
+      });
+      alert1.present();
+    } else{
      this.humancaselist.push({
       key_id: new Date().getTime(),
-         firstname :firstname ,
-         details:details
+         firstname :this.firstname ,
+         details:this.details
            }).then(newPerson => {
              this.firstname="";
              this.details="";
              console.log(this.afAuth.auth.currentUser.uid);
            });
+           console.log( this.firstname + " " + this.details)
+          }
    }
  
  

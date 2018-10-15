@@ -1,155 +1,5 @@
 webpackJsonp([11],{
 
-/***/ 117:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_home__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__feedback_feedback__ = __webpack_require__(254);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__addhumancases_addhumancases__ = __webpack_require__(81);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-/**
- * Generated class for the TabsPage tabs.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var TabsPage = (function () {
-    function TabsPage(navCtrl) {
-        this.navCtrl = navCtrl;
-        this.homeRoot = __WEBPACK_IMPORTED_MODULE_0__home_home__["a" /* HomePage */];
-        this.feedbackRoot = __WEBPACK_IMPORTED_MODULE_3__feedback_feedback__["a" /* FeedbackPage */];
-        this.addCaseRoot = __WEBPACK_IMPORTED_MODULE_4__addhumancases_addhumancases__["a" /* AddhumancasesPage */];
-    }
-    TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-tabs',template:/*ion-inline-start:"C:\Users\AliPr\Desktop\ionic\Ahel-Alkheer\src\pages\tabs\tabs.html"*/`<ion-tabs>\n    <ion-tab [root]="homeRoot" tabTitle="الصفحه الرئيسه" tabIcon="home"></ion-tab>\n    <ion-tab [root]="feedbackRoot" tabTitle="راسلنا" tabIcon="paper-plane"></ion-tab>\n    <ion-tab [root]="addCaseRoot" tabTitle="حالة إنسانية" tabIcon="create"></ion-tab>\n</ion-tabs>\n`/*ion-inline-end:"C:\Users\AliPr\Desktop\ionic\Ahel-Alkheer\src\pages\tabs\tabs.html"*/
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* NavController */]])
-    ], TabsPage);
-    return TabsPage;
-}());
-
-//# sourceMappingURL=tabs.js.map
-
-/***/ }),
-
-/***/ 142:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddneedingPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__needing_needing__ = __webpack_require__(82);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__home_home__ = __webpack_require__(46);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-var AddneedingPage = (function () {
-    function AddneedingPage(fire, navCtrl, navParams, af, alertCtrl, toast) {
-        var _this = this;
-        this.fire = fire;
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.af = af;
-        this.alertCtrl = alertCtrl;
-        this.toast = toast;
-        this.firstname = "";
-        this.lastname = "";
-        this.address = "";
-        this.phone = "";
-        this.infor = "";
-        this.peoplelist = af.list('/waiting');
-        this.fire.auth.onAuthStateChanged(function (user) {
-            // if(!user){
-            //   this.navCtrl.push(LoginPage);
-            // }else{
-            // }
-            console.log(user);
-        });
-        this.fire.authState.subscribe(function (auth) {
-            if (auth) {
-                _this.uid = auth.uid;
-                console.log(auth);
-            }
-        });
-    }
-    AddneedingPage.prototype.createDevice = function (firstname, lastname, address, phone, infor) {
-        var _this = this;
-        if (this.firstname.trim() === '' && this.lastname.trim() === '' && this.address.trim() === '' && this.phone.trim() === '' && this.infor.trim() === '') {
-            var alert1 = this.alertCtrl.create({
-                title: 'رجاءا قم بمليء جميع الادخالات',
-                buttons: ['OK']
-            });
-            alert1.present();
-        }
-        else {
-            this.peoplelist.push({
-                key_id: new Date().getTime(),
-                firstname: this.firstname,
-                lastname: this.lastname,
-                address: this.address,
-                phone: this.phone,
-                infor: this.infor,
-                addBy: this.uid,
-                hide: 0
-            }).then(function (newPerson) {
-                _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__needing_needing__["a" /* NeedingPage */]);
-            });
-        }
-    };
-    AddneedingPage.prototype.goToMain = function () {
-        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__home_home__["a" /* HomePage */]);
-    };
-    AddneedingPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad AddneedingPage');
-    };
-    AddneedingPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-addneeding',template:/*ion-inline-start:"C:\Users\AliPr\Desktop\ionic\Ahel-Alkheer\src\pages\addneeding\addneeding.html"*/`\n\n<ion-header>\n\n  <ion-navbar color="primary">\n\n    <ion-buttons end>\n\n      <button  ion-button color="light"  (click)="goToMain()">\n\n          <ion-icon name=\'ios-home\' is-active="false"></ion-icon>&nbsp;\n\n          \n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title> اضافة حاجة</ion-title>\n\n    \n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content >\n\n\n\n    <ion-list  no-lines>   \n\n            \n\n    \n\n \n\n      <ion-item   >               \n\n        <ion-label  floating > اسم الحاجة: </ion-label>           \n\n         <ion-input  [(ngModel)]= "firstname"  class="ion-input-custom"></ion-input> \n\n          </ion-item>        \n\n             \n\n             \n\n            <ion-item >          \n\n               <ion-label  floating>  اسم المتبرع:</ion-label>\n\n               <ion-input     type="text"  [(ngModel)]= "lastname"  class="ion-input-custom" ></ion-input>              \n\n             </ion-item>\n\n \n\n             <ion-item>\n\n                 <ion-label   floating> عنوان السكن  :</ion-label>\n\n                 <ion-input  type="text"  [(ngModel)]= "address"  class="ion-input-custom"   ></ion-input>\n\n               </ion-item>      \n\n           \n\n               \n\n             <ion-item >\n\n               <ion-label   floating > رقم الهاتف : </ion-label>\n\n               <ion-input  type="number" [(ngModel)]= "phone"class="ion-input-custom" ></ion-input>\n\n             </ion-item>\n\n              \n\n             <ion-item >\n\n               <ion-label   floating>اكتب عن الحاجة : </ion-label>\n\n               <ion-textarea   type="text"  rows="4" [(ngModel)]= "infor" class="ion-input-custom" > </ion-textarea> \n\n               </ion-item >\n\n \n\n          <ion-item>\n\n       \n\n     <!-- <ion-item> -->\n\n      <button ion-button block large  icon-right (click)="createDevice(firstname,lastname,address,phone,\n\n      infor)">\n\n        <div style="margin: 8px">اضافة</div>\n\n         \n\n      </button>\n\n      <!-- </ion-item> -->\n\n\n\n\n\n          </ion-item>    \n\n        \n\n   \n\n    \n\n   </ion-list >\n\n \n\n\n\n</ion-content>\n\n\n\n`/*ion-inline-end:"C:\Users\AliPr\Desktop\ionic\Ahel-Alkheer\src\pages\addneeding\addneeding.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]])
-    ], AddneedingPage);
-    return AddneedingPage;
-}());
-
-//# sourceMappingURL=addneeding.js.map
-
-/***/ }),
-
 /***/ 143:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -158,7 +8,7 @@ var AddneedingPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_call_number__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_call_number__ = __webpack_require__(119);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -222,7 +72,7 @@ var ShowneedingPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(251);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_database__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_BehaviorSubject__ = __webpack_require__(252);
@@ -355,11 +205,11 @@ var JsmapPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_BehaviorSubject__ = __webpack_require__(252);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_BehaviorSubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_BehaviorSubject__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_switchMap__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_switchMap__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_switchMap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__showhumancase_showhumancase__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__home_home__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__addhumancases_addhumancases__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__addhumancases_addhumancases__ = __webpack_require__(83);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -438,7 +288,7 @@ var HumancasePage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ShowhumancasePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_call_number__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_call_number__ = __webpack_require__(119);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -501,8 +351,8 @@ var ShowhumancasePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__addneeding_addneeding__ = __webpack_require__(142);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__tabs_tabs__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__addneeding_addneeding__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__tabs_tabs__ = __webpack_require__(78);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -590,10 +440,11 @@ var SignupPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-signup',template:/*ion-inline-start:"C:\Users\AliPr\Desktop\ionic\Ahel-Alkheer\src\pages\signup\signup.html"*/`\n\n<ion-header> \n\n  \n\n  <ion-navbar color="primary" >\n\n\n\n     <ion-title> انشاء حساب</ion-title> \n\n\n\n    </ion-navbar>\n\n    \n\n   </ion-header>\n\n\n\n\n\n  <ion-content padding>\n\n\n\n  <!-- <ion-list> -->\n\n\n\n      <!-- <p text-center> قم بانشاء حسابك</p>     -->\n\n   \n\n\n\n    <ion-item>\n\n      <ion-label floating> <ion-icon ios="ios-person" md="md-person" color="danger"> البريدالالكتروني</ion-icon> </ion-label>\n\n\n\n         <ion-input type="text" [(ngModel)]="email" ></ion-input>\n\n    </ion-item>\n\n                 \n\n    <ion-item>\n\n         <ion-label floating>  <ion-icon ios="ios-lock" md="md-lock" color="danger"> كلمة المرور </ion-icon></ion-label>\n\n         <ion-input type="password"  [(ngModel)]="password"></ion-input>\n\n    </ion-item>\n\n\n\n      \n\n    <div padding>\n\n    <!-- <ion-item>                   -->\n\n      <button ion-button  block large  icon-right  color="primary"  (click)="Signup()"  >\n\n        <div style="margin: 8px">اضافة حساب</div>       \n\n      </button>        \n\n    <!-- </ion-item>  -->\n\n    \n\n  </div>\n\n\n\n   <!-- </ion-list> -->\n\n  \n\n\n\n \n\n</ion-content>\n\n\n\n \n\n \n\n\n\n   \n\n   `/*ion-inline-end:"C:\Users\AliPr\Desktop\ionic\Ahel-Alkheer\src\pages\signup\signup.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */]])
     ], SignupPage);
     return SignupPage;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=signup.js.map
@@ -753,26 +604,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var FeedbackPage = (function () {
-    function FeedbackPage(app, navCtrl, afAuth, navParams, db, fire) {
+    function FeedbackPage(app, navCtrl, afAuth, navParams, db, fire, alertCtrl) {
         this.app = app;
         this.navCtrl = navCtrl;
         this.afAuth = afAuth;
         this.navParams = navParams;
         this.db = db;
         this.fire = fire;
+        this.alertCtrl = alertCtrl;
+        this.firstname = "";
+        this.details = "";
         this.humancaselist = db.list('/feedback');
     }
-    FeedbackPage.prototype.addcase = function (firstname, address, phone, details) {
+    FeedbackPage.prototype.addcase = function (firstname, details) {
         var _this = this;
-        this.humancaselist.push({
-            key_id: new Date().getTime(),
-            firstname: firstname,
-            details: details
-        }).then(function (newPerson) {
-            _this.firstname = "";
-            _this.details = "";
-            console.log(_this.afAuth.auth.currentUser.uid);
-        });
+        if (this.firstname.trim() === '' || this.details.trim() === '') {
+            var alert1 = this.alertCtrl.create({
+                title: 'رجاءا قم بمليء جميع الادخالات',
+                buttons: ['OK']
+            });
+            alert1.present();
+        }
+        else {
+            this.humancaselist.push({
+                key_id: new Date().getTime(),
+                firstname: this.firstname,
+                details: this.details
+            }).then(function (newPerson) {
+                _this.firstname = "";
+                _this.details = "";
+                console.log(_this.afAuth.auth.currentUser.uid);
+            });
+            console.log(this.firstname + " " + this.details);
+        }
     };
     FeedbackPage.prototype.ionViewDidLoad = function () {
         var _this = this;
@@ -791,12 +655,12 @@ var FeedbackPage = (function () {
     };
     FeedbackPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-feedback',template:/*ion-inline-start:"C:\Users\AliPr\Desktop\ionic\Ahel-Alkheer\src\pages\feedback\feedback.html"*/`<!--\n  Generated template for the FeedbackPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header no-border>\n  <ion-navbar color="primary"   >\n       <ion-title >\n        راسلنا\n       </ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list no-lines  > \n   \n    <ion-item >\n      <ion-label floating >الاسم</ion-label>\n      <ion-input \n            type="text" \n            [(ngModel)]= "firstname" ></ion-input>\n    </ion-item>\n\n   <ion-item>\n     <ion-label floating>اضافه ملاحضه</ion-label>\n     <ion-textarea \n              rows="4"\n              type="text" \n              [(ngModel)]= "details" ></ion-textarea>\n   </ion-item>\n   \n\n   \n<ion-item>\n\n<button ion-button  block large  icon-right color="primary" (click)="addcase(firstname,address,phone,details)" >\n  \n  <ion-icon name=paper-plane large ></ion-icon> &nbsp;&nbsp;\n    إضافة ملاحضه\n \n</button>\n</ion-item>\n\n</ion-list> \n</ion-content>\n`/*ion-inline-end:"C:\Users\AliPr\Desktop\ionic\Ahel-Alkheer\src\pages\feedback\feedback.html"*/,
+            selector: 'page-feedback',template:/*ion-inline-start:"C:\Users\AliPr\Desktop\ionic\Ahel-Alkheer\src\pages\feedback\feedback.html"*/`<!--\n  Generated template for the FeedbackPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header no-border>\n  <ion-navbar color="primary"   >\n       <ion-title >\n        راسلنا\n       </ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list no-lines  > \n   \n    <ion-item >\n      <ion-label floating >الاسم</ion-label>\n      <ion-input \n            type="text" \n            [(ngModel)]= "firstname" ></ion-input>\n    </ion-item>\n\n   <ion-item>\n     <ion-label floating>اضافه ملاحضه</ion-label>\n     <ion-textarea \n              rows="4"\n              type="text" \n              [(ngModel)]= "details" ></ion-textarea>\n   </ion-item>\n   \n\n   \n<ion-item>\n\n<button ion-button  block large  icon-right color="primary" (click)="addcase(firstname,details)" >\n  \n  <ion-icon name=paper-plane large ></ion-icon> &nbsp;&nbsp;\n    إضافة ملاحضه\n \n</button>\n</ion-item>\n\n</ion-list> \n</ion-content>\n`/*ion-inline-end:"C:\Users\AliPr\Desktop\ionic\Ahel-Alkheer\src\pages\feedback\feedback.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["a" /* AngularFireAuth */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */],
-            __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["a" /* AngularFireAuth */]])
+            __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["a" /* AngularFireAuth */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], FeedbackPage);
     return FeedbackPage;
 }());
@@ -862,12 +726,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_about_about__ = __webpack_require__(253);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_contact_contact__ = __webpack_require__(453);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_humancase_humancase__ = __webpack_require__(145);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_addhumancases_addhumancases__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_addhumancases_addhumancases__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_showhumancase_showhumancase__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_home_home__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_tabs_tabs__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_needing_needing__ = __webpack_require__(82);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_addneeding_addneeding__ = __webpack_require__(142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_tabs_tabs__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_needing_needing__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_addneeding_addneeding__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_showneeding_showneeding__ = __webpack_require__(143);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_signup_signup__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_login_login__ = __webpack_require__(47);
@@ -880,7 +744,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22_angularfire2_auth__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__angular_http__ = __webpack_require__(251);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_feedback_feedback__ = __webpack_require__(254);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_call_number__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_call_number__ = __webpack_require__(119);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1021,7 +885,7 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(294);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(295);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(78);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1100,7 +964,7 @@ var ContactPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__needing_needing__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__needing_needing__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__jsmap_jsmap__ = __webpack_require__(144);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__humancase_humancase__ = __webpack_require__(145);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__about_about__ = __webpack_require__(253);
@@ -1156,11 +1020,11 @@ var HomePage = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tabs_tabs__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tabs_tabs__ = __webpack_require__(78);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__addneeding_addneeding__ = __webpack_require__(142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__addneeding_addneeding__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__signup_signup__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__ = __webpack_require__(33);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1255,17 +1119,169 @@ var LoginPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
             selector: 'page-login',template:/*ion-inline-start:"C:\Users\AliPr\Desktop\ionic\Ahel-Alkheer\src\pages\login\login.html"*/`\n\n<ion-header> \n\n  <ion-navbar  color="primary" >\n\n     <ion-title>تسجيل دخول</ion-title> \n\n     <ion-buttons end>\n\n      <button ion-button icon-only (click)="goToMain()">\n\n        <ion-icon name="home"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    </ion-navbar>\n\n   </ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <!-- <ion-list> -->\n\n\n\n     <ion-item>\n\n         <ion-label floating> <ion-icon ios="ios-person" md="md-person" color="danger"> البريدالالكتروني</ion-icon> </ion-label>\n\n        \n\n         <ion-input type="text" [(ngModel)]="email" ></ion-input>\n\n    </ion-item>\n\n      \n\n   <ion-item>\n\n         <ion-label floating>  <ion-icon ios="ios-lock" md="md-lock" color="danger"> كلمة المرور </ion-icon></ion-label>\n\n         <ion-input type="password"  [(ngModel)]="password" ></ion-input>\n\n    </ion-item>\n\n      \n\n    \n\n  <!-- </ion-list> -->\n\n    <!-- <ion-item> -->\n\n <div padding>\n\n           \n\n  <button ion-button block large  icon-right  (click)= "  Login() " > \n\n              <ion-icon name= ios-log-in large> دخول </ion-icon>   \n\n              </button>\n\n     <!-- </ion-item> -->\n\n        \n\n        <p text-center> اذا لم تمتلك حسابا قم بالتسجيل اولا </p>  \n\n      \n\n      <!-- <ion-item> -->\n\n      <button ion-button block large  icon-right (click)="signUP()">\n\n        <div style="margin: 8px">انشاء حساب</div>\n\n          <ion-icon name= ios-log-in  large>  </ion-icon> \n\n      </button>\n\n      <!-- </ion-item> -->\n\n\n\n \n\n\n\n  </div>\n\n\n\n</ion-content>\n\n  \n\n\n\n`/*ion-inline-end:"C:\Users\AliPr\Desktop\ionic\Ahel-Alkheer\src\pages\login\login.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* App */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* ToastController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["a" /* AngularFireAuth */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* NavController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavParams */]) === "function" && _g || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* App */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* ToastController */], __WEBPACK_IMPORTED_MODULE_3_angularfire2_auth__["a" /* AngularFireAuth */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavParams */]])
     ], LoginPage);
     return LoginPage;
-    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=login.js.map
 
 /***/ }),
 
-/***/ 81:
+/***/ 61:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddneedingPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__needing_needing__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__home_home__ = __webpack_require__(46);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var AddneedingPage = (function () {
+    function AddneedingPage(fire, navCtrl, navParams, af, alertCtrl, toast) {
+        var _this = this;
+        this.fire = fire;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.af = af;
+        this.alertCtrl = alertCtrl;
+        this.toast = toast;
+        this.firstname = "";
+        this.lastname = "";
+        this.address = "";
+        this.phone = "";
+        this.infor = "";
+        this.peoplelist = af.list('/waiting');
+        this.fire.auth.onAuthStateChanged(function (user) {
+            // if(!user){
+            //   this.navCtrl.push(LoginPage);
+            // }else{
+            // }
+            console.log(user);
+        });
+        this.fire.authState.subscribe(function (auth) {
+            if (auth) {
+                _this.uid = auth.uid;
+                console.log(auth);
+            }
+        });
+    }
+    AddneedingPage.prototype.createDevice = function (firstname, lastname, address, phone, infor) {
+        var _this = this;
+        if (this.firstname.trim() === '' || this.lastname.trim() === '' || this.address.trim() === '' || this.phone.trim() === '' || this.infor.trim() === '') {
+            var alert1 = this.alertCtrl.create({
+                title: 'رجاءا قم بمليء جميع الادخالات',
+                buttons: ['OK']
+            });
+            alert1.present();
+        }
+        else {
+            this.peoplelist.push({
+                key_id: new Date().getTime(),
+                firstname: this.firstname,
+                lastname: this.lastname,
+                address: this.address,
+                phone: this.phone,
+                infor: this.infor,
+                addBy: this.uid,
+                hide: 0
+            }).then(function (newPerson) {
+                _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__needing_needing__["a" /* NeedingPage */]);
+            });
+        }
+    };
+    AddneedingPage.prototype.goToMain = function () {
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__home_home__["a" /* HomePage */]);
+    };
+    AddneedingPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad AddneedingPage');
+    };
+    AddneedingPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-addneeding',template:/*ion-inline-start:"C:\Users\AliPr\Desktop\ionic\Ahel-Alkheer\src\pages\addneeding\addneeding.html"*/`\n\n<ion-header>\n\n  <ion-navbar color="primary">\n\n    <ion-buttons end>\n\n      <button  ion-button color="light"  (click)="goToMain()">\n\n          <ion-icon name=\'ios-home\' is-active="false"></ion-icon>&nbsp;\n\n          \n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title> اضافة حاجة</ion-title>\n\n    \n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content >\n\n\n\n    <ion-list  no-lines>   \n\n            \n\n    \n\n \n\n      <ion-item   >               \n\n        <ion-label  floating > اسم الحاجة: </ion-label>           \n\n         <ion-input  [(ngModel)]= "firstname"  class="ion-input-custom"></ion-input> \n\n          </ion-item>        \n\n             \n\n             \n\n            <ion-item >          \n\n               <ion-label  floating>  اسم المتبرع:</ion-label>\n\n               <ion-input     type="text"  [(ngModel)]= "lastname"  class="ion-input-custom" ></ion-input>              \n\n             </ion-item>\n\n \n\n             <ion-item>\n\n                 <ion-label   floating> عنوان السكن  :</ion-label>\n\n                 <ion-input  type="text"  [(ngModel)]= "address"  class="ion-input-custom"   ></ion-input>\n\n               </ion-item>      \n\n           \n\n               \n\n             <ion-item >\n\n               <ion-label   floating > رقم الهاتف : </ion-label>\n\n               <ion-input  type="number" [(ngModel)]= "phone"class="ion-input-custom" ></ion-input>\n\n             </ion-item>\n\n              \n\n             <ion-item >\n\n               <ion-label   floating>اكتب عن الحاجة : </ion-label>\n\n               <ion-textarea   type="text"  rows="4" [(ngModel)]= "infor" class="ion-input-custom" > </ion-textarea> \n\n               </ion-item >\n\n \n\n          <ion-item>\n\n       \n\n     <!-- <ion-item> -->\n\n      <button ion-button block large  icon-right (click)="createDevice(firstname,lastname,address,phone,\n\n      infor)">\n\n        <div style="margin: 8px">اضافة</div>\n\n         \n\n      </button>\n\n      <!-- </ion-item> -->\n\n\n\n\n\n          </ion-item>    \n\n        \n\n   \n\n    \n\n   </ion-list >\n\n \n\n\n\n</ion-content>\n\n\n\n`/*ion-inline-end:"C:\Users\AliPr\Desktop\ionic\Ahel-Alkheer\src\pages\addneeding\addneeding.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]])
+    ], AddneedingPage);
+    return AddneedingPage;
+}());
+
+//# sourceMappingURL=addneeding.js.map
+
+/***/ }),
+
+/***/ 78:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_home__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__feedback_feedback__ = __webpack_require__(254);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__addhumancases_addhumancases__ = __webpack_require__(83);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+/**
+ * Generated class for the TabsPage tabs.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var TabsPage = (function () {
+    function TabsPage(navCtrl) {
+        this.navCtrl = navCtrl;
+        this.homeRoot = __WEBPACK_IMPORTED_MODULE_0__home_home__["a" /* HomePage */];
+        this.feedbackRoot = __WEBPACK_IMPORTED_MODULE_3__feedback_feedback__["a" /* FeedbackPage */];
+        this.addCaseRoot = __WEBPACK_IMPORTED_MODULE_4__addhumancases_addhumancases__["a" /* AddhumancasesPage */];
+    }
+    TabsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
+            selector: 'page-tabs',template:/*ion-inline-start:"C:\Users\AliPr\Desktop\ionic\Ahel-Alkheer\src\pages\tabs\tabs.html"*/`<ion-tabs>\n    <ion-tab [root]="homeRoot" tabTitle="الصفحه الرئيسه" tabIcon="home"></ion-tab>\n    <ion-tab [root]="feedbackRoot" tabTitle="راسلنا" tabIcon="paper-plane"></ion-tab>\n    <ion-tab [root]="addCaseRoot" tabTitle="حالة إنسانية" tabIcon="create"></ion-tab>\n</ion-tabs>\n`/*ion-inline-end:"C:\Users\AliPr\Desktop\ionic\Ahel-Alkheer\src\pages\tabs\tabs.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* NavController */]])
+    ], TabsPage);
+    return TabsPage;
+}());
+
+//# sourceMappingURL=tabs.js.map
+
+/***/ }),
+
+/***/ 83:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1290,28 +1306,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var AddhumancasesPage = (function () {
-    function AddhumancasesPage(app, fire, navCtrl, navParams, db) {
+    function AddhumancasesPage(app, fire, alertCtrl, navCtrl, navParams, db) {
         this.app = app;
         this.fire = fire;
+        this.alertCtrl = alertCtrl;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.db = db;
+        this.firstname = "";
+        this.address = "";
+        this.phone = "";
+        this.details = "";
         this.humancaselist = db.list('/waitingcase');
     }
     AddhumancasesPage.prototype.addcase = function (firstname, address, phone, details) {
         var _this = this;
-        this.humancaselist.push({
-            key_id: new Date().getTime(),
-            firstname: firstname,
-            address: address,
-            phone: phone,
-            details: details
-        }).then(function (newPerson) {
-            _this.firstname = "";
-            _this.address = "";
-            _this.phone = "";
-            _this.details = "";
-        });
+        if (this.firstname.trim() === '' || this.address.trim() === '' || this.phone.trim() === '' || this.details.trim() === '') {
+            var alert1 = this.alertCtrl.create({
+                title: 'رجاءا قم بمليء جميع الادخالات',
+                buttons: ['OK']
+            });
+            alert1.present();
+        }
+        else {
+            this.humancaselist.push({
+                key_id: new Date().getTime(),
+                firstname: this.firstname,
+                address: this.address,
+                phone: this.phone,
+                details: this.details
+            }).then(function (newPerson) {
+                _this.firstname = "";
+                _this.address = "";
+                _this.phone = "";
+                _this.details = "";
+            });
+        }
     };
     AddhumancasesPage.prototype.ionViewDidLoad = function () {
         var _this = this;
@@ -1334,7 +1364,7 @@ var AddhumancasesPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-addhumancases',template:/*ion-inline-start:"C:\Users\AliPr\Desktop\ionic\Ahel-Alkheer\src\pages\addhumancases\addhumancases.html"*/`\n\n<ion-header no-border>\n\n    <ion-navbar color="primary"   >\n\n         <ion-title >\n\n           إضافة حالة إنسانية\n\n         </ion-title>\n\n    </ion-navbar>\n\n </ion-header>\n\n    \n\n \n\n <ion-content  padding>\n\n\n\n     <ion-list no-lines  > \n\n   \n\n             <ion-item >\n\n               <ion-label floating >الاسم</ion-label>\n\n               <ion-input \n\n                     type="text" \n\n                     [(ngModel)]= "firstname" ></ion-input>\n\n             </ion-item>\n\n         \n\n             <ion-item>\n\n                <ion-label floating>العنوان</ion-label>\n\n                <ion-input \n\n                        type="text"  \n\n                        [(ngModel)]= "address"></ion-input>\n\n             </ion-item>\n\n \n\n             <ion-item>\n\n               <ion-label floating>رقم الهاتف</ion-label>\n\n               <ion-input \n\n                           type="text"  \n\n                           [(ngModel)]= "phone"></ion-input>\n\n             </ion-item>\n\n       \n\n         \n\n\n\n \n\n            <ion-item>\n\n              <ion-label floating>معلومات المنظمه الخيريه</ion-label>\n\n              <ion-textarea \n\n                       rows="4"\n\n                       type="text" \n\n                       [(ngModel)]= "details" ></ion-textarea>\n\n            </ion-item>\n\n            \n\n\n\n            \n\n       <ion-item>\n\n\n\n       <button ion-button  block large  icon-right color="primary" (click)="addcase(firstname,address,phone,details)" >\n\n           \n\n           <ion-icon name=ios-add-circle large ></ion-icon> &nbsp;&nbsp;\n\n             إضافة حاله\n\n          \n\n         </button>\n\n       </ion-item>\n\n        \n\n     </ion-list> \n\n </ion-content>\n\n`/*ion-inline-end:"C:\Users\AliPr\Desktop\ionic\Ahel-Alkheer\src\pages\addhumancases\addhumancases.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["a" /* AngularFireAuth */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* App */], __WEBPACK_IMPORTED_MODULE_4_angularfire2_auth__["a" /* AngularFireAuth */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */]])
     ], AddhumancasesPage);
     return AddhumancasesPage;
@@ -1344,7 +1374,7 @@ var AddhumancasesPage = (function () {
 
 /***/ }),
 
-/***/ 82:
+/***/ 84:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1353,10 +1383,10 @@ var AddhumancasesPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_switchMap__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_switchMap__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_switchMap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__addneeding_addneeding__ = __webpack_require__(142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__addneeding_addneeding__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__home_home__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__showneeding_showneeding__ = __webpack_require__(143);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {

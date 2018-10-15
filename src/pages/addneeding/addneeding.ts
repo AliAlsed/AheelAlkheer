@@ -53,7 +53,7 @@ export class AddneedingPage {
  
   createDevice(firstname,lastname, address,phone,infor){
 
-    if( this.firstname.trim()  ===''  && this.lastname.trim() === '' && this.address.trim()   ===''  &&  this.phone.trim()   ===''  && this.infor.trim()   ==='' ){
+    if( this.firstname.trim()  ===''  || this.lastname.trim() === '' || this.address.trim()   ===''  ||  this.phone.trim()   ===''  || this.infor.trim()   ==='' ){
 
       let alert1 = this.alertCtrl.create({
         title: 'رجاءا قم بمليء جميع الادخالات',
